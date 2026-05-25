@@ -12,13 +12,20 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
     // campos declarados aqui para todos os métodos enxergarem
     CadastroController controller = new CadastroController();// cria o controller que será usado para salvar os dados
 
-    // campos do animal - declarados aqui fora pra que o botão salvar consiga ler os valores digitados
+    // campos do animal - declarados aqui fora pra que o botão salvar consiga ler os
+    // valores digitados
     JTextField nomeAnimal;
     JTextField racaAnimal;
     JTextField idadeAnimal;
     JComboBox<String> comboEspecie;
     JRadioButton masculino;
     JRadioButton feminino;
+    ButtonGroup grupoSexo;
+    JCheckBox checkV8;
+    JCheckBox checkGripe;
+    JCheckBox checkGiardia;
+    JCheckBox checkAntirrabica;
+    JCheckBox checkLeishmaniose;
 
     // campos do tutor - declarados aqui fora pelo mesmo motivo dos campos do animal
     JTextField nomeTutor;
@@ -26,15 +33,16 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
     JTextField cpfTutor;
 
     public JanelaPrincipal() {// construtor (Base de toda a janela inicial)
-        setTitle("Clínica Veterinária"); //título da janela(que aparece lá em cima)
-        setSize(800, 600);//(largura e altura)
+        setTitle("Clínica Veterinária"); // título da janela(que aparece lá em cima)
+        setSize(800, 600);// (largura e altura)
         setDefaultCloseOperation(EXIT_ON_CLOSE); // encerra o programa ao fechar
         criarMenu(); // usa o menu que criamos com o construtor
         criarPainelCadastro();// adiciona o painel de cadastro
         setVisible(true); // deixa a janela visível
     }
 
-    private void criarMenu() {// metodo de criar o menu, usado pois o menu será reutilizado na tela da consulta
+    private void criarMenu() {// metodo de criar o menu, usado pois o menu será reutilizado na tela da
+                              // consulta
 
         // 1. cria a barra
         JMenuBar barraMenu = new JMenuBar();
@@ -53,9 +61,12 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
     private void criarPainelCadastro() {
 
-        // 1. cria o painel principal (containerzão que vai ter o container da esquerda e o da direita)
+        // 1. cria o painel principal (containerzão que vai ter o container da esquerda
+        // e o da direita)
         JPanel painelPrincipal = new JPanel();
-        painelPrincipal.setLayout(new BoxLayout(painelPrincipal, BoxLayout.X_AXIS));// X_AXIS é o eixo horizontal - essa linha diz (organize tudo lado a lado da esquerda pra direita)
+        painelPrincipal.setLayout(new BoxLayout(painelPrincipal, BoxLayout.X_AXIS));// X_AXIS é o eixo horizontal - essa
+                                                                                    // linha diz (organize tudo lado a
+                                                                                    // lado da esquerda pra direita)
 
         // 2. chama o metodo que monta o painel esquerdo (dados do animal)
         JPanel painelEsquerdo = criarPainelEsquerdo();
@@ -77,7 +88,8 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         // cria o painel e define que os componentes serão empilhados de cima pra baixo
         JPanel painel = new JPanel();
-        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));// Y_AXIS é o eixo vertical - organiza os componentes um abaixo do outro
+        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));// Y_AXIS é o eixo vertical - organiza os componentes
+                                                                  // um abaixo do outro
 
         // ----- seção: dados do animal -----
         JLabel tituloInformacaoAnimal = new JLabel("Dados do animal");
@@ -111,7 +123,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         feminino = new JRadioButton("Feminino");
 
         // 2. junta os dois no ButtonGroup pra que só um possa ser selecionado
-        ButtonGroup grupoSexo = new ButtonGroup();
+        grupoSexo = new ButtonGroup();
         grupoSexo.add(masculino);
         grupoSexo.add(feminino);
 
@@ -121,12 +133,13 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         JLabel vacinasJLabel = new JLabel("Vacinas");
         painel.add(vacinasJLabel);
 
-        // cada checkbox é uma vacina e como são JCheckBox, podem ser marcadas várias ao mesmo tempo
-        JCheckBox checkV8 = new JCheckBox("v8, v10, v12");
-        JCheckBox checkGripe = new JCheckBox("Gripe Canina");
-        JCheckBox checkGiardia = new JCheckBox("Giárdia");
-        JCheckBox checkAntirrabica = new JCheckBox("Antirrábica");
-        JCheckBox checkLeishmaniose = new JCheckBox("Leishmaniose");
+        // cada checkbox é uma vacina e como são JCheckBox, podem ser marcadas várias ao
+        // mesmo tempo
+        checkV8 = new JCheckBox("v8, v10, v12");
+        checkGripe = new JCheckBox("Gripe Canina");
+        checkGiardia = new JCheckBox("Giárdia");
+        checkAntirrabica = new JCheckBox("Antirrábica");
+        checkLeishmaniose = new JCheckBox("Leishmaniose");
 
         painel.add(checkV8);
         painel.add(checkGripe);
@@ -141,7 +154,8 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         // cria o painel e define que os componentes serão empilhados de cima pra baixo
         JPanel painel = new JPanel();
-        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));//aqui define que serão um abaixo do outro por conta do eixo Y (vertical)
+        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));// aqui define que serão um abaixo do outro por conta
+                                                                  // do eixo Y (vertical)
 
         JLabel tituloInformacaoTutor = new JLabel("Tutor Responsável");
         painel.add(tituloInformacaoTutor);
@@ -161,26 +175,51 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         cpfTutor = new JTextField();
         painel.add(cpfTutor);
 
-        //parte dos botões limpar e salvar
-        JPanel painelBotoes = new JPanel();// painel interno para deixar os botões lado a lado, pois se colocassemos direto no painel direito eles iriam ficar um em cima do outro
+        // parte dos botões limpar e salvar
+        JPanel painelBotoes = new JPanel();// painel interno para deixar os botões lado a lado, pois se colocassemos
+                                           // direto no painel direito eles iriam ficar um em cima do outro
 
         JButton botaoLimpar = new JButton("Limpar");
+        botaoLimpar.addActionListener(e -> {
+            // limpa os campos do animal
+            nomeAnimal.setText("");
+            racaAnimal.setText("");
+            idadeAnimal.setText("");
+            comboEspecie.setSelectedIndex(0);// volta para a primeira opção da lista
+            grupoSexo.clearSelection();// desmarca todos os radio buttons do grupo
+
+            //limpa todos os checks das vacinas
+            checkV8.setSelected(false);
+            checkGripe.setSelected(false);
+            checkGiardia.setSelected(false);
+            checkAntirrabica.setSelected(false);
+            checkLeishmaniose.setSelected(false);
+            // limpa os campos do tutor
+            nomeTutor.setText("");
+            telefoneTutor.setText("");
+            cpfTutor.setText("");
+        });
+
         JButton botaoSalvar = new JButton("Salvar");
 
         // define o que acontece quando o botão salvar é clicado
         botaoSalvar.addActionListener(e -> {
             // 1. lê os valores digitados em cada campo
             String nome = nomeAnimal.getText();
-            String especieSelecionada = (String) comboEspecie.getSelectedItem();// pega o item selecionado na lista suspensa e converte para String(por padrão viria o objeto)
+            String especieSelecionada = (String) comboEspecie.getSelectedItem();// pega o item selecionado na lista
+                                                                                // suspensa e converte para String(por
+                                                                                // padrão viria o objeto)
             String raca = racaAnimal.getText();
             String idadeTexto = idadeAnimal.getText();
-            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";// se masculino estiver marcado retorna "Masculino", senão retorna "Feminino"
+            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";// se masculino estiver marcado retorna
+                                                                            // "Masculino", senão retorna "Feminino"
 
             // 2. manda os dados para o controller validar e salvar
             // o controller retorna true se salvou ou false se algum campo estava vazio
             boolean salvou = controller.salvarAnimal(nome, especieSelecionada, raca, idadeTexto, sexo);
 
-            // 3. mostra uma caixa de dialogo de acordo com o resultado, se for true, tudo esta ok, se for falso ago n esta preenchido
+            // 3. mostra uma caixa de dialogo de acordo com o resultado, se for true, tudo
+            // esta ok, se for falso ago n esta preenchido
             if (salvou) {
                 JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");// caixa de sucesso
             } else {
