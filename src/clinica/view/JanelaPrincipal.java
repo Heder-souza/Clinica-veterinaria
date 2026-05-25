@@ -91,36 +91,47 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));// Y_AXIS é o eixo vertical - organiza os componentes
                                                                   // um abaixo do outro
 
-        // ----- seção: dados do animal -----
         JLabel tituloInformacaoAnimal = new JLabel("Dados do animal");
+        tituloInformacaoAnimal.setAlignmentX(LEFT_ALIGNMENT);// alinha o titulo à esquerda
         painel.add(tituloInformacaoAnimal);
 
         JLabel nomeAnimalLabel = new JLabel("Nome");
+        nomeAnimalLabel.setAlignmentX(LEFT_ALIGNMENT);// alinha o label à esquerda
         painel.add(nomeAnimalLabel);
-        nomeAnimal = new JTextField();
+        nomeAnimal = new JTextField(20);// 20 = tamanho do campo em colunas
+        nomeAnimal.setAlignmentX(LEFT_ALIGNMENT);// alinha o campo à esquerda
         painel.add(nomeAnimal);
 
         JLabel especie = new JLabel("Especie");
+        especie.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(especie);
         comboEspecie = new JComboBox<>(especies);
+        comboEspecie.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(comboEspecie);
 
         JLabel raca = new JLabel("Raça");
+        raca.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(raca);
-        racaAnimal = new JTextField();
+        racaAnimal = new JTextField(20);
+        racaAnimal.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(racaAnimal);
 
         JLabel idade = new JLabel("Idade");
+        idade.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(idade);
-        idadeAnimal = new JTextField();
+        idadeAnimal = new JTextField(20);
+        idadeAnimal.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(idadeAnimal);
 
         JLabel sexo = new JLabel("Sexo");
+        sexo.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(sexo);
 
         // 1. cria os dois botões de seleção de sexo
         masculino = new JRadioButton("Masculino");
         feminino = new JRadioButton("Feminino");
+        masculino.setAlignmentX(LEFT_ALIGNMENT);
+        feminino.setAlignmentX(LEFT_ALIGNMENT);
 
         // 2. junta os dois no ButtonGroup pra que só um possa ser selecionado
         grupoSexo = new ButtonGroup();
@@ -131,6 +142,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         painel.add(feminino);
 
         JLabel vacinasJLabel = new JLabel("Vacinas");
+        vacinasJLabel.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(vacinasJLabel);
 
         // cada checkbox é uma vacina e como são JCheckBox, podem ser marcadas várias ao
@@ -140,6 +152,12 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         checkGiardia = new JCheckBox("Giárdia");
         checkAntirrabica = new JCheckBox("Antirrábica");
         checkLeishmaniose = new JCheckBox("Leishmaniose");
+
+        checkV8.setAlignmentX(LEFT_ALIGNMENT);
+        checkGripe.setAlignmentX(LEFT_ALIGNMENT);
+        checkGiardia.setAlignmentX(LEFT_ALIGNMENT);
+        checkAntirrabica.setAlignmentX(LEFT_ALIGNMENT);
+        checkLeishmaniose.setAlignmentX(LEFT_ALIGNMENT);
 
         painel.add(checkV8);
         painel.add(checkGripe);
@@ -158,21 +176,28 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
                                                                   // do eixo Y (vertical)
 
         JLabel tituloInformacaoTutor = new JLabel("Tutor Responsável");
+        tituloInformacaoTutor.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(tituloInformacaoTutor);
 
         JLabel nomeTutorLabel = new JLabel("Nome");
+        nomeTutorLabel.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(nomeTutorLabel);
-        nomeTutor = new JTextField();
+        nomeTutor = new JTextField(20);
+        nomeTutor.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(nomeTutor);
 
         JLabel telefone = new JLabel("Telefone");
+        telefone.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(telefone);
-        telefoneTutor = new JTextField();
+        telefoneTutor = new JTextField(20);
+        telefoneTutor.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(telefoneTutor);
 
         JLabel cpf = new JLabel("CPF");
+        cpf.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(cpf);
-        cpfTutor = new JTextField();
+        cpfTutor = new JTextField(20);
+        cpfTutor.setAlignmentX(LEFT_ALIGNMENT);
         painel.add(cpfTutor);
 
         // parte dos botões limpar e salvar
@@ -181,7 +206,48 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         JButton botaoLimpar = new JButton("Limpar");
         botaoLimpar.addActionListener(e -> {
-            // limpa os campos do animal
+        limparCampos();
+        });
+
+        JButton botaoSalvar = new JButton("Salvar");
+
+        // define o que acontece quando o botão salvar é clicado
+        botaoSalvar.addActionListener(e -> {
+            String nome = nomeAnimal.getText();
+            String especieSelecionada = (String) comboEspecie.getSelectedItem();
+            String raca = racaAnimal.getText();
+            String idadeTexto = idadeAnimal.getText();
+            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";// se masculino estiver marcado retorna
+                                                                            // "Masculino", senão retorna "Feminino"
+
+            // dados do tutor
+            String nomeDoTutor = nomeTutor.getText();
+            String telefoneDoTutor = telefoneTutor.getText();
+            String cpfDoTutor = cpfTutor.getText();
+
+            // recebe todos os dados e envia para o controller fazer a verificação e
+            // retornar false(algum campo vazio) ou true(todos completos)
+            boolean salvou = controller.salvarCadastro(nome, especieSelecionada, raca, idadeTexto, sexo, nomeDoTutor,
+                    telefoneDoTutor, cpfDoTutor);
+
+            if (salvou) {
+                JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+        });
+
+        painelBotoes.add(botaoLimpar);
+        painelBotoes.add(botaoSalvar);
+
+        painel.add(painelBotoes);
+
+        return painel;
+    }
+
+    private void limparCampos(){
+        // limpa os campos do animal
             nomeAnimal.setText("");
             racaAnimal.setText("");
             idadeAnimal.setText("");
@@ -194,43 +260,10 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
             checkGiardia.setSelected(false);
             checkAntirrabica.setSelected(false);
             checkLeishmaniose.setSelected(false);
+
             // limpa os campos do tutor
             nomeTutor.setText("");
             telefoneTutor.setText("");
             cpfTutor.setText("");
-        });
-
-        JButton botaoSalvar = new JButton("Salvar");
-
-        // define o que acontece quando o botão salvar é clicado
-        botaoSalvar.addActionListener(e -> {
-            String nome = nomeAnimal.getText();
-            String especieSelecionada = (String) comboEspecie.getSelectedItem();
-            String raca = racaAnimal.getText();
-            String idadeTexto = idadeAnimal.getText();
-            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";
-
-            // dados do tutor
-            String nomeDoTutor = nomeTutor.getText();
-            String telefoneDoTutor = telefoneTutor.getText();
-            String cpfDoTutor = cpfTutor.getText();
-
-            //recebe todos os dados e envia para o controller fazer a verificação e retornar false(algum campo vazio) ou true(todos completos)
-            boolean salvou = controller.salvarCadastro(nome, especieSelecionada, raca, idadeTexto, sexo, nomeDoTutor,
-                    telefoneDoTutor, cpfDoTutor);
-
-            if (salvou) {
-                JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-            }
-        });
-
-        painelBotoes.add(botaoLimpar);
-        painelBotoes.add(botaoSalvar);
-
-        painel.add(painelBotoes);
-
-        return painel;
     }
 }
