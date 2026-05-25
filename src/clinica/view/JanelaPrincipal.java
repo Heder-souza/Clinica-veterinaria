@@ -188,7 +188,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
             comboEspecie.setSelectedIndex(0);// volta para a primeira opção da lista
             grupoSexo.clearSelection();// desmarca todos os radio buttons do grupo
 
-            //limpa todos os checks das vacinas
+            // limpa todos os checks das vacinas
             checkV8.setSelected(false);
             checkGripe.setSelected(false);
             checkGiardia.setSelected(false);
@@ -204,26 +204,25 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         // define o que acontece quando o botão salvar é clicado
         botaoSalvar.addActionListener(e -> {
-            // 1. lê os valores digitados em cada campo
             String nome = nomeAnimal.getText();
-            String especieSelecionada = (String) comboEspecie.getSelectedItem();// pega o item selecionado na lista
-                                                                                // suspensa e converte para String(por
-                                                                                // padrão viria o objeto)
+            String especieSelecionada = (String) comboEspecie.getSelectedItem();
             String raca = racaAnimal.getText();
             String idadeTexto = idadeAnimal.getText();
-            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";// se masculino estiver marcado retorna
-                                                                            // "Masculino", senão retorna "Feminino"
+            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";
 
-            // 2. manda os dados para o controller validar e salvar
-            // o controller retorna true se salvou ou false se algum campo estava vazio
-            boolean salvou = controller.salvarAnimal(nome, especieSelecionada, raca, idadeTexto, sexo);
+            // dados do tutor
+            String nomeDoTutor = nomeTutor.getText();
+            String telefoneDoTutor = telefoneTutor.getText();
+            String cpfDoTutor = cpfTutor.getText();
 
-            // 3. mostra uma caixa de dialogo de acordo com o resultado, se for true, tudo
-            // esta ok, se for falso ago n esta preenchido
+            //recebe todos os dados e envia para o controller fazer a verificação e retornar false(algum campo vazio) ou true(todos completos)
+            boolean salvou = controller.salvarCadastro(nome, especieSelecionada, raca, idadeTexto, sexo, nomeDoTutor,
+                    telefoneDoTutor, cpfDoTutor);
+
             if (salvou) {
-                JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");// caixa de sucesso
+                JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
             } else {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");// caixa de erro
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             }
         });
 

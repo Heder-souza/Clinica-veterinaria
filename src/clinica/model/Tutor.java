@@ -5,12 +5,12 @@
 package clinica.model;
 
 public class Tutor {
-    String nome;
+    String nomeTutor;
     String telefone;
     String cpf;
 
-    public Tutor(String nome, String telefone, String cpf){
-        this.nome = nome;
+    public Tutor(String nomeTutor, String telefone, String cpf){
+        this.nomeTutor = nomeTutor;
         this.telefone = telefone;
         this.cpf = cpf;
     }
