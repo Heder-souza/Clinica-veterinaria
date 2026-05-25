@@ -12,7 +12,8 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
     // campos declarados aqui para todos os métodos enxergarem
     CadastroController controller = new CadastroController();// cria o controller que será usado para salvar os dados
 
-    // campos do animal - declarados aqui fora pra que o botão salvar consiga ler os
+    // campos do animal - declarados aqui fora pra que o qualquer metodo consiga ler
+    // os
     // valores digitados
     JTextField nomeAnimal;
     JTextField racaAnimal;
@@ -26,6 +27,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
     JCheckBox checkGiardia;
     JCheckBox checkAntirrabica;
     JCheckBox checkLeishmaniose;
+    JTabbedPane abas;
 
     // campos do tutor - declarados aqui fora pelo mesmo motivo dos campos do animal
     JTextField nomeTutor;
@@ -37,8 +39,13 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         setSize(800, 600);// (largura e altura)
         setDefaultCloseOperation(EXIT_ON_CLOSE); // encerra o programa ao fechar
         criarMenu(); // usa o menu que criamos com o construtor
-        criarPainelCadastro();// adiciona o painel de cadastro
+
+        abas = new JTabbedPane();
+        abas.addTab("Cadastro", criarPainelCadastro());
+        abas.addTab("Consulta", new JPanel());
+        add(abas);
         setVisible(true); // deixa a janela visível
+
     }
 
     private void criarMenu() {// metodo de criar o menu, usado pois o menu será reutilizado na tela da
@@ -47,19 +54,19 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         // 1. cria a barra
         JMenuBar barraMenu = new JMenuBar();
 
-        // 2. cria os menus
-        JMenu cadastro = new JMenu("Cadastro");
-        JMenu consulta = new JMenu("Consulta");
+        // 2. cria o menu
+        JMenu menuSair = new JMenu("Sistema");
 
-        // 3. adiciona os menus na BarraMenu
-        barraMenu.add(cadastro);
-        barraMenu.add(consulta);
+        // 3. adiciona o menu na BarraMenu
+        JMenuItem itemSair = new JMenuItem("Sair do sistema");
+        itemSair.addActionListener(e -> System.exit(0));// fecha o programa
+        menuSair.add(itemSair);
 
-        // 4. mostrar a barra na janela
+        barraMenu.add(menuSair);
         setJMenuBar(barraMenu);
     }
 
-    private void criarPainelCadastro() {
+    private JPanel criarPainelCadastro() {
 
         // 1. cria o painel principal (containerzão que vai ter o container da esquerda
         // e o da direita)
@@ -79,7 +86,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         painelPrincipal.add(painelDireito);
 
         // 5. adiciona o painel principal na janela
-        add(painelPrincipal);
+        return painelPrincipal;
     }
 
     private JPanel criarPainelEsquerdo() {
@@ -206,7 +213,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         JButton botaoLimpar = new JButton("Limpar");
         botaoLimpar.addActionListener(e -> {
-        limparCampos();
+            limparCampos();
         });
 
         JButton botaoSalvar = new JButton("Salvar");
@@ -246,24 +253,24 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         return painel;
     }
 
-    private void limparCampos(){
+    private void limparCampos() {
         // limpa os campos do animal
-            nomeAnimal.setText("");
-            racaAnimal.setText("");
-            idadeAnimal.setText("");
-            comboEspecie.setSelectedIndex(0);// volta para a primeira opção da lista
-            grupoSexo.clearSelection();// desmarca todos os radio buttons do grupo
+        nomeAnimal.setText("");
+        racaAnimal.setText("");
+        idadeAnimal.setText("");
+        comboEspecie.setSelectedIndex(0);// volta para a primeira opção da lista
+        grupoSexo.clearSelection();// desmarca todos os radio buttons do grupo
 
-            // limpa todos os checks das vacinas
-            checkV8.setSelected(false);
-            checkGripe.setSelected(false);
-            checkGiardia.setSelected(false);
-            checkAntirrabica.setSelected(false);
-            checkLeishmaniose.setSelected(false);
+        // limpa todos os checks das vacinas
+        checkV8.setSelected(false);
+        checkGripe.setSelected(false);
+        checkGiardia.setSelected(false);
+        checkAntirrabica.setSelected(false);
+        checkLeishmaniose.setSelected(false);
 
-            // limpa os campos do tutor
-            nomeTutor.setText("");
-            telefoneTutor.setText("");
-            cpfTutor.setText("");
+        // limpa os campos do tutor
+        nomeTutor.setText("");
+        telefoneTutor.setText("");
+        cpfTutor.setText("");
     }
 }
