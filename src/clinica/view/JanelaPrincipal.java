@@ -5,15 +5,20 @@
 package clinica.view;
 
 import javax.swing.*;// chama a ferramenta JFrame para que possa ser usada
+import clinica.controller.CadastroController;
 
 public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela principal sera um JFrame (exibivel)
     // campos declarados aqui para todos os métodos enxergarem
+    CadastroController controller = new CadastroController();
     JTextField nomeAnimal;
     JTextField racaAnimal;
     JTextField idadeAnimal;
     JComboBox<String> comboEspecie;
     JRadioButton masculino;
     JRadioButton feminino;
+    JTextField nomeTutor;
+    JTextField telefoneTutor;
+    JTextField cpfTutor;
 
     public JanelaPrincipal() {// construtor (Base de toda a janela inicial)
         setTitle("Clínica Veterinária"); // define o título da janela
@@ -141,19 +146,19 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         JLabel nomeTutorLabel = new JLabel("Nome");
         painel.add(nomeTutorLabel);
 
-        JTextField nomeTutor = new JTextField();
+         nomeTutor = new JTextField();
         painel.add(nomeTutor);
 
         JLabel telefone = new JLabel("Telefone");
         painel.add(telefone);
 
-        JTextField telefoneTutor = new JTextField();
+         telefoneTutor = new JTextField();
         painel.add(telefoneTutor);
 
         JLabel cpf = new JLabel("CPF");
         painel.add(cpf);
 
-        JTextField cpfTutor = new JTextField();
+         cpfTutor = new JTextField();
         painel.add(cpfTutor);
 
         JPanel painelBotoes = new JPanel();// painel para deixar os botões lado a lado
@@ -161,8 +166,26 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         JButton botaoLimpar = new JButton("Limpar");
         JButton botaoSalvar = new JButton("Salvar");
 
+        botaoSalvar.addActionListener(e -> {
+            String nome = nomeAnimal.getText();
+            String especieSelecionada = (String) comboEspecie.getSelectedItem();
+            String raca = racaAnimal.getText();
+            String idadeTexto = idadeAnimal.getText();
+            String sexo = masculino.isSelected() ? "Masculino" : "Feminino";
+
+            boolean salvou = controller.salvarAnimal(nome, especieSelecionada, raca, idadeTexto, sexo);
+
+            if (salvou) {
+                JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+});
+
         painelBotoes.add(botaoLimpar);
         painelBotoes.add(botaoSalvar);
+
+        
 
         painel.add(painelBotoes);
 
