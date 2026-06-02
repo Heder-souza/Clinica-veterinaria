@@ -4,7 +4,7 @@ Aplicação desktop desenvolvida em Java Swing utilizando o padrão arquitetural
 
 
 
-# Tecnologias Utilizadas: 
+# Tecnologias Utilizadas
 
 -  Java
 -  Java Swing / AWT
@@ -25,7 +25,7 @@ O grupo utilizou a linguagem Java, a interface gráfica do Java Swing junto com 
   
 
 
-## 📑 Documentação detalhada
+##  Documentação detalhada
 
 A documentação detalhada e relatórios técnicos estão em páginas específicas dentro da pasta 'docs/'
 
