@@ -2,6 +2,8 @@
 
 Aplicação desktop desenvolvida em Java Swing utilizando o padrão arquitetural MVC (Model-View-Controller) para o gerenciamento de cadastros de pets, tutores e consultas médicas.
 
+
+
 # Tecnologias Utilizadas: 
 
 -  Java
@@ -9,6 +11,8 @@ Aplicação desktop desenvolvida em Java Swing utilizando o padrão arquitetural
 -  MVC (Model-View-Controller)
 
 O grupo utilizou a linguagem Java, a interface gráfica do Java Swing junto com os recursos da biblioteca AWT, tudo isso estruturado sob o padrão MVC.
+
+
 
 ## Necessidades para a execução 
 
@@ -18,7 +22,8 @@ O grupo utilizou a linguagem Java, a interface gráfica do Java Swing junto com 
 - Navegue até o arquivo `src/clinica/Main.java`.
 - Execute (Run) no `Main.java` para inicializar a interface gráfica do sistema.
 
----
+  
+
 
 ## 📑 Documentação detalhada
 
