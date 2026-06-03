@@ -275,9 +275,89 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
     }
 
     private JPanel JanelaConsulta() {
+        JPanel consultadireita = new JPanel();
+        consultadireita.setLayout(new BoxLayout(consultadireita, BoxLayout.Y_AXIS));
         JPanel consulta = new JPanel();
-        JButton teste = new JButton();
-        consulta.add(teste);
+
+        String[] especies = { "cachorro", "gato", "ave", "coelho", "reptil", "outro" };
+
+        // cria o painel e define que os componentes serão empilhados de cima pra baixo
+        consulta.setLayout(new BoxLayout(consulta, BoxLayout.Y_AXIS));// Y_AXIS é o eixo vertical - organiza os componentes
+                                                                  // um abaixo do outro
+
+        JLabel tituloInformacaoAnimal = new JLabel("Dados do animal");
+        tituloInformacaoAnimal.setAlignmentX(LEFT_ALIGNMENT);// alinha o titulo à esquerda
+        consulta.add(tituloInformacaoAnimal);
+
+        JLabel nomeAnimalLabel = new JLabel("Nome");
+        nomeAnimalLabel.setAlignmentX(LEFT_ALIGNMENT);// alinha o label à esquerda
+        consulta.add(nomeAnimalLabel);
+        nomeAnimal = new JTextField(20);// 20 = tamanho do campo em colunas
+        nomeAnimal.setAlignmentX(LEFT_ALIGNMENT);// alinha o campo à esquerda
+        consulta.add(nomeAnimal);
+
+        JLabel especie = new JLabel("Especie");
+        especie.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(especie);
+        comboEspecie = new JComboBox<>(especies);
+        comboEspecie.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(comboEspecie);
+
+        JLabel raca = new JLabel("Raça");
+        raca.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(raca);
+        racaAnimal = new JTextField(20);
+        racaAnimal.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(racaAnimal);
+
+        JLabel idade = new JLabel("Idade");
+        idade.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(idade);
+        idadeAnimal = new JTextField(20);
+        idadeAnimal.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(idadeAnimal);
+
+        JLabel sexo = new JLabel("Sexo");
+        sexo.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(sexo);
+
+        // 1. cria os dois botões de seleção de sexo
+        masculino = new JRadioButton("Masculino");
+        feminino = new JRadioButton("Feminino");
+        masculino.setAlignmentX(LEFT_ALIGNMENT);
+        feminino.setAlignmentX(LEFT_ALIGNMENT);
+
+        // 2. junta os dois no ButtonGroup pra que só um possa ser selecionado
+        grupoSexo = new ButtonGroup();
+        grupoSexo.add(masculino);
+        grupoSexo.add(feminino);
+
+        consulta.add(masculino);
+        consulta.add(feminino);
+
+        JLabel vacinasJLabel = new JLabel("Vacinas");
+        vacinasJLabel.setAlignmentX(LEFT_ALIGNMENT);
+        consulta.add(vacinasJLabel);
+
+        // cada checkbox é uma vacina e como são JCheckBox, podem ser marcadas várias ao
+        // mesmo tempo
+        checkV8 = new JCheckBox("v8, v10, v12");
+        checkGripe = new JCheckBox("Gripe Canina");
+        checkGiardia = new JCheckBox("Giárdia");
+        checkAntirrabica = new JCheckBox("Antirrábica");
+        checkLeishmaniose = new JCheckBox("Leishmaniose");
+
+        checkV8.setAlignmentX(LEFT_ALIGNMENT);
+        checkGripe.setAlignmentX(LEFT_ALIGNMENT);
+        checkGiardia.setAlignmentX(LEFT_ALIGNMENT);
+        checkAntirrabica.setAlignmentX(LEFT_ALIGNMENT);
+        checkLeishmaniose.setAlignmentX(LEFT_ALIGNMENT);
+
+        consulta.add(checkV8);
+        consulta.add(checkGripe);
+        consulta.add(checkGiardia);
+        consulta.add(checkAntirrabica);
+        consulta.add(checkLeishmaniose);
         return consulta;
     }
 }
