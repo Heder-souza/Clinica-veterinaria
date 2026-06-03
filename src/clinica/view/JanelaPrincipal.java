@@ -42,7 +42,7 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
 
         abas = new JTabbedPane();
         abas.addTab("Cadastro", criarPainelCadastro());
-        abas.addTab("Consulta", new JPanel());
+        abas.addTab("Consulta", JanelaConsulta());
         add(abas);
         setVisible(true); // deixa a janela visível
 
@@ -272,5 +272,12 @@ public class JanelaPrincipal extends JFrame {// aqui avisa pro java que a Janela
         nomeTutor.setText("");
         telefoneTutor.setText("");
         cpfTutor.setText("");
+    }
+
+    private JPanel JanelaConsulta() {
+        JPanel consulta = new JPanel();
+        JButton teste = new JButton();
+        consulta.add(teste);
+        return consulta;
     }
 }
