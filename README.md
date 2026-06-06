@@ -31,7 +31,7 @@ A documentação detalhada e relatórios técnicos estão em páginas específic
 
 Os arquivos são:
 
--  **[Visão Geral do Projeto](docs/visao_geral.md)**
+-  **[Visão Geral do Projeto](docs/visão_geral.md)**
 -  **[Estrutura e Padrão MVC](docs/estrutura_mvc.md)**
 -  **[Explicação detalhada do Código](docs/explicacao_codigo.md)**
 
