@@ -3,7 +3,7 @@
 Este documento detalha as tecnologias de base utilizadas no desenvolvimento do Sistema de Clínica Veterinária e explica como o padrão **MVC (Model-View-Controller)** foi aplicado, além de mostrar a organização e distribuição das nossas pastas.
 
 
-# 1. O esqueleto do projeto
+# O esqueleto do projeto
 
 Para compreender a arquitetura do sistema, é necessário entender o papel de cada tecnologia utilizada na construção da aplicação:
 
@@ -12,7 +12,7 @@ Para compreender a arquitetura do sistema, é necessário entender o papel de ca
 * **Java Swing:** É a biblioteca que de fato constrói a nossa interface gráfica (GUI). O Swing roda, oferecendo componentes muito mais modernos, leves e customizáveis 
 
 
-# 2. Conceito do Padrão MVC
+# Conceito do Padrão MVC
 
 O padrão **MVC (Model-View-Controller)** é um padrão de arquitetura de software que divide a aplicação em três camadas, que é o Model, View e Controller. 
 
@@ -24,7 +24,7 @@ Em sistemas simples, é muito comum que iniciantes coloquem todo o código (o de
 3.  O trabalho em grupo fica mais fácil.
 
 
-# 3. Organização de arquivos
+# Organização de arquivos
 
 A organização de arquivos e pastas foi pensada para atender a uma facilidade visual clara, organizada e simples. Veja a seguir:
 ---
