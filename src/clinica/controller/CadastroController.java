@@ -9,8 +9,10 @@ import clinica.model.Tutor;// pegamos a "ficha modelo" de cadastro do dono
 import java.util.ArrayList;// aqui importamos o array list pq diferente do array normal, nele não precisamos definir um tamanho fixo, nós vamos adicionando os dados e ele vai crescendo conforme necessário
 import java.util.List;// necessário para usarmos o array list
 
+
 public class CadastroController {
 
+    
     // lista que guarda todos os animais cadastrados durante o uso do programa
     // funciona como um arquivo que vai crescendo conforme novos animais são
     // cadastrados
@@ -34,6 +36,10 @@ public class CadastroController {
         Tutor tutor = new Tutor(nomeTutor, telefone, cpf);
         Animal animal = new Animal(nome, especie, raca, idade, sexo, tutor);
         animais.add(animal);
-        return true;
+        return true;    
     }
+
+    public List<Animal> getAnimais() {
+    return animais;
+}
 }
