@@ -25,12 +25,12 @@ Cadastro (Pets e Tutores)
 * Guarda de dados essenciais do tutor, como nome, telefone e cpf.
 
 
-Atendimento Clínico (JTabbedPane)
+Atendimento Clínico 
 * Abas, com separação visual clara entre a aba de Cadastros e a aba de Consultas Médicas.
 
 Navegação, Filtros e Alertas
 * Menu do Sistema, com barra superior de navegação com acesso rápido para as opções de "Cadastro", "Consultas" e "Sair".
-* Filtro Avançado, com botão de seleção rápida para filtrar e exibir na tela apenas os animais que possuem uma consulta agendada.
+* Filtro, com botão de seleção rápida para filtrar e exibir na tela apenas os animais que possuem uma consulta agendada.
 
 # Avisos importantes
 Para alinhar as expectativas do funcionamento do projeto, o sistema tem as seguintes caracteristicas:
