@@ -52,5 +52,4 @@ A organização de arquivos e pastas foi pensada para atender a uma facilidade v
 Veja também:
 
 -  **[Visão Geral do Projeto](visão_geral.md)**
--  **[Explicação detalhada do Código](explicacao_codigo.md)**
 
