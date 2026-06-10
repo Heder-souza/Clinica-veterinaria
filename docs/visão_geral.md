@@ -41,4 +41,3 @@ Para alinhar as expectativas do funcionamento do projeto, o sistema tem as segui
 
 Veja também:
 -  **[Estrutura e Padrão MVC](estrutura_mvc.md)**
--  **[Explicação detalhada do Código](explicacao_codigo.md)**
