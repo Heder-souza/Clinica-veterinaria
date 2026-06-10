@@ -40,5 +40,5 @@ Para alinhar as expectativas do funcionamento do projeto, o sistema tem as segui
 * A aplicação funciona exclusivamente de forma local na máquina onde está sendo executada, não possuindo ainda nenhuma forma de acessos simultâneos em rede.
 
 Veja também:
--  **[Estrutura e Padrão MVC](docs/estrutura_mvc.md)**
--  **[Explicação detalhada do Código](docs/explicacao_codigo.md)**
+-  **[Estrutura e Padrão MVC](estrutura_mvc.md)**
+-  **[Explicação detalhada do Código](explicacao_codigo.md)**
